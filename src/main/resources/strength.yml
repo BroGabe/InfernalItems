@@ -1,0 +1,12 @@
+duration: 6 # How long the effect last
+amplifier: 3 # The level of the potion effect
+potion-effect: 'INCREASE_DAMAGE'
+
+deny-at-base: false
+blacklisted-regions:
+  - 'spawn'
+
+strength-item:
+  name: '&c&lSTRENGTH ORB'
+  lore:
+    - '&7Grants you strength 3 for 6 seconds'

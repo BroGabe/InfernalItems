@@ -1,0 +1,9 @@
+deny-at-base: false
+blacklisted-regions:
+  - 'spawn'
+
+bard-item:
+  name: '&c&lBARD BLOCKER'
+  lore:
+    - '&7Disables enemy bards within a 30 block radius'
+    - '&7for 15 seconds.'

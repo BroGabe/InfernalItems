@@ -1,0 +1,8 @@
+deny-at-base: false
+blacklisted-regions:
+  - 'spawn'
+
+blinder-item:
+  name: '&c&lBLINDER BALL'
+  lore:
+    - '&7Blinds the shot enemy'

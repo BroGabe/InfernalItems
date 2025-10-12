@@ -1,0 +1,3 @@
+messages:
+  blinder-msg: '&4&lPVP&c&lITEMS &fYou have blinded &e%player%.'
+  cooldown-msg: '&4&lPvP&c&lItems &fYou are on cooldown for &e%seconds% &fseconds.'

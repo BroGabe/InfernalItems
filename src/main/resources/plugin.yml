@@ -1,0 +1,8 @@
+name: InfernalItems
+version: '${version}'
+depend:
+  - Factions
+  - FactionsKore
+  - WorldGuard
+  - WorldEdit
+main: com.brogabe.infernalitems.InfernalItems

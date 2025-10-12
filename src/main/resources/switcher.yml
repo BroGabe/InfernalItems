@@ -1,0 +1,8 @@
+deny-at-base: false
+blacklisted-regions:
+  - 'spawn'
+
+switcher-item:
+  name: '&c&lSWITCHER BALL'
+  lore:
+    - '&7Switches positions with an enemy'

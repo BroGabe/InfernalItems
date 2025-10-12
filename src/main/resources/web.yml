@@ -1,0 +1,8 @@
+deny-at-base: false
+blacklisted-regions:
+  - 'spawn'
+
+web-item:
+  name: '&c&lThrowable Cobwebs'
+  lore:
+    - '&7Spawns cobwebs where it lands'

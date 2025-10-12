@@ -1,0 +1,12 @@
+duration: 6 # How long the effect last
+amplifier: 3 # The level of the potion effect
+potion-effect: 'SPEED'
+
+deny-at-base: false
+blacklisted-regions:
+  - 'spawn'
+
+speed-item:
+  name: '&c&lSPEED ORB'
+  lore:
+    - '&7Grants you speed 3 for 6 seconds'

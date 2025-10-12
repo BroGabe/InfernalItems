@@ -1,0 +1,8 @@
+deny-at-base: false
+blacklisted-regions:
+  - 'spawn'
+
+pearl-item:
+  name: '&c&lFAUX PEARL'
+  lore:
+    - '&7Throws a fake enderpearl'

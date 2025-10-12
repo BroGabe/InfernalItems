@@ -1,0 +1,9 @@
+deny-at-base: true
+blacklisted-regions:
+  - 'spawn'
+
+pearl-item:
+  name: '&c&lPearl Blocker'
+  lore:
+    - '&7Blocks enemy pearls from landing within'
+    - '&7a 15 block radius for 5 seconds.'
