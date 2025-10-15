@@ -3,6 +3,7 @@ amplifier: 3 # The level of the potion effect
 potion-effect: 'INCREASE_DAMAGE'
 
 deny-at-base: false
+cooldown: 120
 blacklisted-regions:
   - 'spawn'
 

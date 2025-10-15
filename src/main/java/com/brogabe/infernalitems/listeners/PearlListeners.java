@@ -8,6 +8,8 @@ import com.brogabe.infernalitems.modules.types.ItemModule;
 import com.brogabe.infernalitems.utils.ColorUtil;
 import com.brogabe.infernalitems.utils.FactionsUtil;
 import com.brogabe.infernalitems.utils.WorldGuardUtil;
+import com.golfing8.kore.FactionsKore;
+import com.golfing8.kore.feature.EnderpearlFeature;
 import org.bukkit.Sound;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -38,6 +40,8 @@ public class PearlListeners implements Listener {
     public void onInteract(PlayerInteractEvent event) {
         if(event.getAction() != Action.RIGHT_CLICK_AIR && event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
 
+        EnderpearlFeature enderpearlFeature = FactionsKore.get().getFeature(EnderpearlFeature.class);
+
         Player player = event.getPlayer();
 
         ItemModule itemModule = plugin.getModuleManager().getItemModule();
@@ -51,6 +55,12 @@ public class PearlListeners implements Listener {
             return;
         }
 
+        if(enderpearlFeature.isPlayerOnEnderpearlCooldown(player)) {
+            player.sendMessage(ColorUtil.color("&4&lPvP&c&lItems &fYou are on a pearl cooldown!"));
+            event.setCancelled(true);
+            return;
+        }
+
         if(lastPearlThrown.containsKey(player.getUniqueId())) {
             player.sendMessage(ColorUtil.color("&4&lPvP&c&lItems &fYou already have a &efake &fenderpearl landing."));
             event.setCancelled(true);
@@ -60,7 +70,7 @@ public class PearlListeners implements Listener {
         lastPearlThrown.put(player.getUniqueId(), Instant.now());
     }
 
-    @EventHandler(priority = EventPriority.LOWEST)
+    @EventHandler()
     public void onTeleport(PlayerTeleportEvent event) {
         if(event.getCause() != PlayerTeleportEvent.TeleportCause.ENDER_PEARL) return;
 

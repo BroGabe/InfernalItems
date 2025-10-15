@@ -45,6 +45,7 @@ public class ItemCmd extends BaseCommand {
         plugin.getAntiPearlCFG().reloadConfig();
         plugin.getSwitcherCFG().reloadConfig();
         plugin.getMenu().reload();
+        plugin.getConfigManager().reloadConfig();
 
         sender.sendMessage(ColorUtil.color("&4&lPvP&c&lItems &fYou have &ereloaded&f the plugin."));
     }

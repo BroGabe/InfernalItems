@@ -20,6 +20,6 @@ public class ModuleManager {
     public ModuleManager(InfernalItems plugin) {
         waterModule = new WaterModule(plugin);
         itemModule = new ItemModule(plugin);
-        cooldownModule = new CooldownModule();
+        cooldownModule = new CooldownModule(plugin);
     }
 }

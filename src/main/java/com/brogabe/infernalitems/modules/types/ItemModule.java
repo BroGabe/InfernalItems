@@ -66,7 +66,7 @@ public class ItemModule {
         ConfigManager configManager = plugin.getConfigManager();
         CooldownModule module = plugin.getModuleManager().getCooldownModule();
 
-        if(module.hasCooldown(player, type)) {
+        if(module.hasCooldown(player, type) && !player.hasPermission("infernalitems.admin")) {
             player.sendMessage(ColorUtil.color(configManager.getCooldownMsg()
                     .replace("%seconds%", String.valueOf(module.getCooldownSeconds(player.getPlayer(), type)))));
             return false;

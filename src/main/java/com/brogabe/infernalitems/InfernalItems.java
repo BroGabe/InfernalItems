@@ -7,8 +7,10 @@ import com.brogabe.infernalitems.enums.InfernalType;
 import com.brogabe.infernalitems.listeners.*;
 import com.brogabe.infernalitems.menus.ItemsMenu;
 import com.brogabe.infernalitems.modules.ModuleManager;
+import com.golfing8.kore.feature.KothFeature;
 import lombok.Getter;
 import org.bukkit.Bukkit;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.Arrays;

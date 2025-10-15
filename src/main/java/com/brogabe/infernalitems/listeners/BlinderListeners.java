@@ -7,9 +7,6 @@ import com.brogabe.infernalitems.modules.types.CooldownModule;
 import com.brogabe.infernalitems.modules.types.ItemModule;
 import com.brogabe.infernalitems.modules.types.WaterModule;
 import com.brogabe.infernalitems.utils.ColorUtil;
-import com.brogabe.infernalitems.utils.FactionsUtil;
-import com.brogabe.infernalitems.utils.WorldGuardUtil;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Snowball;
 import org.bukkit.event.EventHandler;
@@ -103,9 +100,9 @@ public class BlinderListeners implements Listener {
 
         ConfigManager configManager = plugin.getConfigManager();
 
-        victim.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 20 * 5, 3));
-        victim.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 20 * 5, 1));
-        victim.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 20 * 5, 1));
+        victim.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 20 * 8, 3));
+        victim.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, 20 * 8, 1));
+        victim.addPotionEffect(new PotionEffect(PotionEffectType.WITHER, 20 * 8, 1));
 
         shooter.sendMessage(ColorUtil.color(configManager.getBlindMsg().replace("%player%", victim.getName())));
 

@@ -1,14 +1,11 @@
 package com.brogabe.infernalitems.listeners;
 
 import com.brogabe.infernalitems.InfernalItems;
-import com.brogabe.infernalitems.configuration.ConfigManager;
 import com.brogabe.infernalitems.enums.InfernalType;
 import com.brogabe.infernalitems.modules.types.CooldownModule;
 import com.brogabe.infernalitems.modules.types.ItemModule;
 import com.brogabe.infernalitems.modules.types.WaterModule;
 import com.brogabe.infernalitems.utils.ColorUtil;
-import com.brogabe.infernalitems.utils.FactionsUtil;
-import com.brogabe.infernalitems.utils.WorldGuardUtil;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -16,7 +13,6 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Egg;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.Snowball;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -27,8 +23,6 @@ import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.metadata.FixedMetadataValue;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -57,28 +51,15 @@ public class WebListeners implements Listener {
             return;
         }
 
-        ConfigManager configManager = plugin.getConfigManager();
-
-        CooldownModule module = plugin.getModuleManager().getCooldownModule();
-
-        if(module.hasCooldown(player, InfernalType.WEB)) {
-            player.sendMessage(ColorUtil.color(configManager.getCooldownMsg()
-                    .replace("%seconds%", String.valueOf(module.getCooldownSeconds(player.getPlayer(), InfernalType.WEB)))));
-            event.setCancelled(true);
-            return;
-        }
-
         FileConfiguration config = plugin.getWebCFG().getConfig();
 
-        if(config.getBoolean("deny-at-base") && FactionsUtil.isInBaseRegion(player)) {
-            player.sendMessage(ColorUtil.color("&4&lPvP&c&lItems &fYou &e&ncannot&f do this here."));
+        if(!itemModule.canUseItem(player, config, InfernalType.WEB)) {
             event.setCancelled(true);
             return;
         }
 
-        for(String blacklistedRegion : config.getStringList("blacklisted-regions")) {
-            if(!WorldGuardUtil.isInBlacklistedRegion(blacklistedRegion, player.getUniqueId())) continue;
-            player.sendMessage(ColorUtil.color("&4&lPvP&c&lItems &fYou &e&ncannot&f do this here."));
+        if(lastWebThrown.containsKey(player.getUniqueId())) {
+            player.sendMessage(ColorUtil.color("&4&lPvp&c&lItems &fYou already have a &eweb&f landing!"));
             event.setCancelled(true);
             return;
         }

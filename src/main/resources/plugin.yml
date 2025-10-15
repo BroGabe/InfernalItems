@@ -1,7 +1,8 @@
 name: InfernalItems
 version: '${version}'
 depend:
-  - Factions
+  - VulcanLoader
+  - VulcanAPI
   - FactionsKore
   - WorldGuard
   - WorldEdit

@@ -28,8 +28,6 @@ public class WorldGuardUtil {
 
         List<String> regionNames = regionSet.getRegions().stream().map(protectedRegion -> protectedRegion.getId().toLowerCase()).collect(Collectors.toList());
 
-        regionNames.forEach(Bukkit::broadcastMessage);
-
         return regionNames.contains(region.toLowerCase());
     }
 

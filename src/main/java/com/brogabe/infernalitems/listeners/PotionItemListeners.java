@@ -5,13 +5,21 @@ import com.brogabe.infernalitems.enums.InfernalType;
 import com.brogabe.infernalitems.modules.types.CooldownModule;
 import com.brogabe.infernalitems.modules.types.ItemModule;
 import com.brogabe.infernalitems.utils.ColorUtil;
+import net.vulcandev.vulcanapi.vulcanenchants.VulcanEnchantsAPI;
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.potion.PotionType;
+
 
 public class PotionItemListeners implements Listener {
 
@@ -61,7 +69,19 @@ public class PotionItemListeners implements Listener {
 
         cooldownModule.addCooldown(player, type);
 
+        player.removePotionEffect(potionType);
         player.addPotionEffect(new PotionEffect(potionType, 20 * duration, amplifier));
         player.sendMessage(ColorUtil.color("&4&lPvP&c&lItems &fYou have activated your effects!"));
+
+        if(!VulcanEnchantsAPI.isAvailable()) return;
+
+        VulcanEnchantsAPI enchantsAPI = VulcanEnchantsAPI.getInstance();
+
+        Bukkit.getScheduler().runTaskLater(plugin, () -> {
+            enchantsAPI.applyAllPotionEnchants(player);
+        }, 20L * duration);
+
     }
+
+
 }
